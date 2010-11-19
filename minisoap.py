@@ -4,6 +4,7 @@ import httplib, time, xml.dom
 from urllib import splithost, splittype, urlopen
 import xml.dom.minidom as minidom
 
+
 NS = {
     "wsdl":         "http://schemas.xmlsoap.org/wsdl/",
     "wsdlsoap":     "http://schemas.xmlsoap.org/wsdl/soap/",
@@ -11,18 +12,23 @@ NS = {
     "soap":         "http://schemas.xmlsoap.org/soap/envelope/"
 }
 
+
 USERAGENT = "minisoap/0.1"
 DEBUG = False
 TIMEOUT = 60
 
+
 class SoapException(Exception):
     pass
+
 
 class WsdlException(Exception):
     pass
 
+
 class ServiceException(Exception):
     pass
+
 
 class Service:
     """Parse a WSDL file for a service and answer requests to the defined operations. Only works with document/literal-style services (e.g. Google) because types are almost completely ignored."""
@@ -103,6 +109,7 @@ class Service:
             return self.operations[name]
         else:
             raise KeyError(name)
+
 
 class Operation:
     def __init__(self, opnode, targetNs, port, binding, uri):
